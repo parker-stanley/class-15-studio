@@ -163,6 +163,14 @@ inner join (
 on book_genre.book_id = patron_loan.book_id
 where patron_loan.date_in is null;
 
+-- another version
+SELECT first_name, last_name, genres
+FROM patron
+JOIN loan USING (patron_id)
+JOIN book USING (book_id)
+JOIN genre USING (genre_id)
+WHERE date_in IS NULL;
+
 # bonus missions
 
 select genre_id, COUNT(*)
